@@ -1,0 +1,25 @@
+{
+    "name": "axy/patterns",
+    "type": "library",
+    "description": "Some basic patterns",
+    "keywords": [
+        "Patterns"
+    ],
+    "homepage": "https://github.com/axypro/patterns",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Grigoriev",
+            "email": "go.vasac@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "axy\\patterns\\": ""
+        }
+    },
+    "target-dir": "axy/patterns"
+}
