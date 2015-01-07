@@ -7,5 +7,5 @@ Implementation of several patterns.
 Standard and own.
 
 * [Trait Singleton](Singleton.md)
-* Class Registry - the registry with chips
+* [Class Registry](Registry.md) - the registry with chips
 * Class Container - the container
