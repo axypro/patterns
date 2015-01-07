@@ -6,8 +6,9 @@
 namespace axy\patterns\tests\nstst;
 
 use axy\magic\ArrayMagic;
+use axy\patterns\Container;
 
-class Cont extends \axy\patterns\Container
+class Cont extends Container
 {
     use ArrayMagic;
 

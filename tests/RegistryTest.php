@@ -188,7 +188,7 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
 
     public function testCountable()
     {
-        $creatorY = function ($key) {
+        $creatorY = function () {
             return 'y';
         };
         $registry = new Registry(['x' => 1], ['y' => $creatorY]);
@@ -202,7 +202,7 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
 
     public function testIterator()
     {
-        $creatorY = function ($key) {
+        $creatorY = function () {
             return 'y';
         };
         $registry = new Registry(['x' => 1], ['y' => $creatorY]);

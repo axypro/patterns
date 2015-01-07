@@ -57,7 +57,6 @@ class Container implements \ArrayAccess
      *
      * @param string $key
      * @return mixed
-     * @throws \axy\errors\ServiceNotFound
      */
     protected function getPointerForSub($key)
     {
