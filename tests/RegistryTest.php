@@ -8,16 +8,16 @@ namespace axy\patterns\tests;
 use axy\patterns\Registry;
 
 /**
- * @coversDefaultClass axy\patterns\Registry
+ * coversDefaultClass axy\patterns\Registry
  */
 class RegistryTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::__construct
-     * @covers ::get
-     * @covers ::set
-     * @covers ::exists
-     * @covers ::remove
+     * covers ::__construct
+     * covers ::get
+     * covers ::set
+     * covers ::exists
+     * covers ::remove
      */
     public function testPlain()
     {
@@ -43,12 +43,12 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::get
-     * @covers ::set
-     * @covers ::exists
-     * @covers ::remove
-     * @covers ::isLoaded
+     * covers ::__construct
+     * covers ::get
+     * covers ::set
+     * covers ::exists
+     * covers ::remove
+     * covers ::isLoaded
      */
     public function testLazy()
     {
@@ -81,13 +81,13 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::get
-     * @covers ::set
-     * @covers ::setLazy
-     * @covers ::exists
-     * @covers ::remove
-     * @covers ::isConstant
+     * covers ::__construct
+     * covers ::get
+     * covers ::set
+     * covers ::setLazy
+     * covers ::exists
+     * covers ::remove
+     * covers ::isConstant
      */
     public function testConstant()
     {
@@ -108,9 +108,9 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::toReadOnly
-     * @covers ::isReadOnly
+     * covers ::__construct
+     * covers ::toReadOnly
+     * covers ::isReadOnly
      */
     public function testToReadOnly()
     {
@@ -125,9 +125,9 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__construct
-     * @covers ::toReadOnly
-     * @covers ::isReadOnly
+     * covers ::__construct
+     * covers ::toReadOnly
+     * covers ::isReadOnly
      */
     public function testContructReadOnly()
     {
@@ -139,10 +139,10 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
-     * @covers ::__set
-     * @covers ::__isset
-     * @covers ::__unset
+     * covers ::__get
+     * covers ::__set
+     * covers ::__isset
+     * covers ::__unset
      */
     public function testMagic()
     {
@@ -214,7 +214,7 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::exists
+     * covers ::exists
      */
     public function testExistsNull()
     {
@@ -224,8 +224,8 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::setLazy
-     * @covers ::get
+     * covers ::setLazy
+     * covers ::get
      */
     public function testNotCallable()
     {

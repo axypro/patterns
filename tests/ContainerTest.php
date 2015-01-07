@@ -8,12 +8,12 @@ namespace axy\patterns\tests;
 use axy\patterns\tests\nstst\Cont;
 
 /**
- * @coversDefaultClass axy\patterns\Container
+ * coversDefaultClass axy\patterns\Container
  */
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::__isset
+     * covers ::__isset
      */
     public function testIsset()
     {
@@ -83,7 +83,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      * @expectedException \axy\patterns\errors\ServiceNotExists
      * @expectedExceptionMessage Service "unk" is not exist in "Cont"
      */
@@ -94,7 +94,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__get
+     * covers ::__get
      * @expectedException \axy\creator\errors\InvalidPointer
      */
     public function testInvalidPointer()
@@ -104,7 +104,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::__set
+     * covers ::__set
      * @expectedException \axy\magic\errors\ContainerReadOnly
      */
     public function testReadOnly()

@@ -5,9 +5,11 @@
 
 namespace axy\patterns\tests\nstst;
 
+use axy\magic\ArrayMagic;
+
 class Cont extends \axy\patterns\Container
 {
-    use \axy\magic\ArrayMagic;
+    use ArrayMagic;
 
     /**
      * {@inheritdoc}

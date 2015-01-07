@@ -5,12 +5,14 @@
 
 namespace axy\patterns\tests\nstst;
 
-class Serv extends \axy\patterns\Container
+use axy\patterns\Container;
+
+class Serv extends Container
 {
     public $args;
 
     public function __construct()
     {
-        $this->args = \func_get_args();
+        $this->args = func_get_args();
     }
 }

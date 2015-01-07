@@ -1,14 +1,13 @@
 <?php
 /**
  * @package axy\patterns
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\patterns;
 
 /**
  * The trait for creating a singleton
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 trait Singleton
 {

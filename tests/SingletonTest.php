@@ -9,12 +9,12 @@ use axy\patterns\tests\nstst\SingParent;
 use axy\patterns\tests\nstst\SingChild;
 
 /**
- * @coversDefaultClass axy\patterns\Singleton
+ * coversDefaultClass axy\patterns\Singleton
  */
 class SingletonTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ::getInstance
+     * covers ::getInstance
      */
     public function testGetInstance()
     {

@@ -1,25 +1,25 @@
 <?php
 /**
  * @package axy\patterns
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\patterns;
 
 use axy\callbacks\Callback;
+use axy\magic\ArrayMagic;
 use axy\patterns\errors\ContainerReadOnly;
 use axy\patterns\errors\PropertyReadOnly;
 
 /**
  * The registry
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
 {
-    use \axy\magic\ArrayMagic;
+    use ArrayMagic;
 
     /**
-     * Constructor
+     * The constructor
      *
      * @param array $vars [optional]
      *        the list of variables (key => value)
@@ -36,7 +36,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * Set a variable
+     * Sets a variable value
      *
      * @param string $name
      *        a variable name
@@ -54,11 +54,11 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
         $this->checkWritable($name);
         $this->vars[$name] = $value;
         unset($this->lazy[$name]);
-        $this->consts[$name] = $const;
+        $this->constants[$name] = $const;
     }
 
     /**
-     * Set a lazy variable
+     * Sets a lazy variable
      *
      * @param string $name
      *        a variable name
@@ -76,7 +76,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
         $this->checkWritable($name);
         $this->lazy[$name] = $creator;
         unset($this->vars[$name]);
-        $this->consts[$name] = $const;
+        $this->constants[$name] = $const;
     }
 
     /**
@@ -106,7 +106,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * Get a variable
+     * Returns a variable
      *
      * @param string $name
      *        a variable name
@@ -121,10 +121,10 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function get($name, $default = null, $load = true)
     {
-        if (\array_key_exists($name, $this->vars)) {
+        if (array_key_exists($name, $this->vars)) {
             return $this->vars[$name];
         }
-        if ((\array_key_exists($name, $this->lazy)) && $load) {
+        if ((array_key_exists($name, $this->lazy)) && $load) {
             $this->vars[$name] = Callback::call($this->lazy[$name], [$name]);
             unset($this->lazy[$name]);
             return $this->vars[$name];
@@ -133,18 +133,18 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * Check if a variable exists
+     * Checks if a variable exists
      *
      * @param string $name
      * @return boolean
      */
     public function exists($name)
     {
-        return \array_key_exists($name, $this->vars) || \array_key_exists($name, $this->lazy);
+        return (array_key_exists($name, $this->vars) || array_key_exists($name, $this->lazy));
     }
 
     /**
-     * Remove a variable
+     * Removes a variable
      *
      * @param string $name
      *        the variable name
@@ -160,36 +160,37 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
         $this->checkWritable($name);
         unset($this->vars[$name]);
         unset($this->lazy[$name]);
-        $this->consts[$name] = false;
+        $this->constants[$name] = false;
     }
 
     /**
-     * Check if a variable is constant
+     * Checks if a variable is constant
      *
      * @param string $name
      * @return boolean
      */
     public function isConstant($name)
     {
-        return (!empty($this->consts[$name]));
+        return (!empty($this->constants[$name]));
     }
 
     /**
-     * Check if a variable has been loaded
+     * Checks if a variable has been loaded
      *
      * @param string $name
      * @return boolean
      */
     public function isLoaded($name)
     {
-        return \array_key_exists($name, $this->vars);
+        return array_key_exists($name, $this->vars);
     }
 
     /**
-     * Get the list of all variables
+     * Returns the list of all variables
      *
      * @param boolean $load [optional]
      *        FALSE - returns only loaded variables
+     * @return array
      */
     public function getAllVars($load = true)
     {
@@ -202,7 +203,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * Mark a variable as constant
+     * Marks a variable as constant
      *
      * @param string $name
      * @return boolean
@@ -210,12 +211,12 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     public function markAsConstant($name)
     {
         if ($this->exists($name)) {
-            $this->consts[$name] = true;
+            $this->constants[$name] = true;
         }
     }
 
     /**
-     * Switche the registry to read-only mode
+     * Switches the registry to read-only mode
      *
      * @return boolean
      *         switching occurred in a presently
@@ -230,7 +231,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * Check if the registry mode is read-only
+     * Checks if the registry mode is read-only
      *
      * @return boolean
      */
@@ -252,7 +253,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function __set($key, $value)
     {
-        return $this->set($key, $value);
+        $this->set($key, $value);
     }
 
     /**
@@ -276,7 +277,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function count()
     {
-        return \count($this->vars) + \count($this->lazy);
+        return count($this->vars) + count($this->lazy);
     }
 
     /**
@@ -297,7 +298,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
         if ($this->readonly) {
             throw new ContainerReadOnly($this);
         }
-        if (!empty($this->consts[$name])) {
+        if (!empty($this->constants[$name])) {
             throw new PropertyReadOnly($this, $name);
         }
     }
@@ -315,7 +316,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     /**
      * @var array
      */
-    private $consts = [];
+    private $constants = [];
 
     /**
      * @var boolean

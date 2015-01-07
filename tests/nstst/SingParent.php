@@ -5,9 +5,11 @@
 
 namespace axy\patterns\tests\nstst;
 
+use axy\patterns\Singleton;
+
 class SingParent
 {
-    use \axy\patterns\Singleton;
+    use Singleton;
 
     /**
      * @return \axy\patterns\tests\nstst\SingParent

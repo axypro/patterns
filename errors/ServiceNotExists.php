@@ -1,16 +1,17 @@
 <?php
 /**
  * @package axy\patterns
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\patterns\errors;
 
+use axy\magic\errors\FieldNotExist;
+
 /**
  * A subservice is not exists
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
-class ServiceNotExists extends \axy\magic\errors\FieldNotExist
+class ServiceNotExists extends FieldNotExist
 {
     protected $defaultMessage = 'Service "{{ key }}" is not exist in "{{ container }}"';
 }

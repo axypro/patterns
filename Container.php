@@ -1,42 +1,49 @@
 <?php
 /**
  * @package axy\patterns
+ * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 
 namespace axy\patterns;
 
 use axy\creator\Creator;
+use axy\errors\RequiresOverride;
+use axy\magic\LazyField;
+use axy\magic\ArrayMagic;
+use axy\magic\ReadOnly;
+use axy\magic\Named;
 
 /**
  * The container of subservices
- *
- * @author Oleg Grigoriev <go.vasac@gmail.com>
  */
 class Container implements \ArrayAccess
 {
-    use \axy\magic\LazyField;
-    use \axy\magic\ArrayMagic;
-    use \axy\magic\ReadOnly;
-    use \axy\magic\Named;
+    use LazyField;
+    use ArrayMagic;
+    use ReadOnly;
+    use Named;
 
+    /**
+     * The constructor
+     */
     public function __construct()
     {
         $this->context = $this->getContextForCreator();
     }
 
     /**
-     * Get the context for creator
+     * Returns the context for creator
      *
      * @return array
      */
     protected function getContextForCreator()
     {
-        if (!\is_array($this->context)) {
-            throw new \axy\errors\RequiresOverride();
+        if (!is_array($this->context)) {
+            throw new RequiresOverride();
         }
-        if (\array_key_exists('arg_this', $this->context)) {
-            if (isset($this->context['args']) && \is_array($this->context['args'])) {
-                \array_unshift($this->context['args'], $this);
+        if (array_key_exists('arg_this', $this->context)) {
+            if (isset($this->context['args']) && is_array($this->context['args'])) {
+                array_unshift($this->context['args'], $this);
             } else {
                 $this->context['args'] = [$this];
             }
@@ -46,14 +53,15 @@ class Container implements \ArrayAccess
     }
 
     /**
-     * Get the pointer for a subservice
+     * Returns the pointer for a subservice
      *
      * @param string $key
+     * @return mixed
      * @throws \axy\errors\ServiceNotFound
      */
     protected function getPointerForSub($key)
     {
-        if (!\is_array($this->subs)) {
+        if (!is_array($this->subs)) {
             return null;
         }
         return isset($this->subs[$key]) ? $this->subs[$key] : null;
@@ -97,7 +105,7 @@ class Container implements \ArrayAccess
      */
     private function getCachedPointer($key)
     {
-        if (!\array_key_exists($key, $this->cachePointers)) {
+        if (!array_key_exists($key, $this->cachePointers)) {
             $this->cachePointers[$key] = $this->getPointerForSub($key);
         }
         return $this->cachePointers[$key];
