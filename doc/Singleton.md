@@ -35,7 +35,7 @@ class Child extends Parent
 {
 }
 
-(Parent::getInstance() === Child::getInstance); // TRUE
+(Parent::getInstance() === Child::getInstance()); // TRUE
 ```
 
 If a child needs the own singleton you should define it directly:
