@@ -5,6 +5,8 @@
  * @package axy\patterns
  * @author Oleg Grigoriev <go.vasac@gmail.com>
  * @license https://raw.github.com/axypro/patterns/master/LICENSE MIT
+ * @link https://github.com/axypro/patterns repository
+ * @link https://packagist.org/packages/axy/patterns on packagist.org
  * @uses PHP5.4+
  */
 
