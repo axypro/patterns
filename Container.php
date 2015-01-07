@@ -14,7 +14,7 @@ use axy\magic\ReadOnly;
 use axy\magic\Named;
 
 /**
- * The container of subservices
+ * The container of nested services
  */
 class Container implements \ArrayAccess
 {
@@ -39,7 +39,7 @@ class Container implements \ArrayAccess
     protected function getContextForCreator()
     {
         if (!is_array($this->context)) {
-            throw new RequiresOverride();
+            throw new RequiresOverride(get_class($this).'::$context');
         }
         if (array_key_exists('arg_this', $this->context)) {
             if (isset($this->context['args']) && is_array($this->context['args'])) {
@@ -53,7 +53,7 @@ class Container implements \ArrayAccess
     }
 
     /**
-     * Returns the pointer for a subservice
+     * Returns the pointer for a nested service
      *
      * @param string $key
      * @return mixed

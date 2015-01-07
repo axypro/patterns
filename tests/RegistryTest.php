@@ -234,4 +234,23 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException('axy\callbacks\errors\NotCallable');
         $registry->get('k');
     }
+
+    /**
+     * covers ::setVars
+     */
+    public function testSetVars()
+    {
+        $registry = new Registry();
+        $vars = ['x' => 1, 'y' => 2];
+        $lazy = ['y' => function ($key) {
+            return $key.'!';
+        }];
+        $registry->setVars($vars, $lazy);
+        $expected = [
+            'x' => 1,
+        ];
+        $this->assertEquals($expected, $registry->getAllVars(false));
+        $expected['y'] = 'y!';
+        $this->assertEquals($expected, $registry->getAllVars(true));
+    }
 }

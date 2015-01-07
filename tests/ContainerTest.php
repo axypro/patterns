@@ -6,6 +6,7 @@
 namespace axy\patterns\tests;
 
 use axy\patterns\tests\nstst\Cont;
+use axy\patterns\tests\nstst\ContNoContext;
 
 /**
  * coversDefaultClass axy\patterns\Container
@@ -41,7 +42,6 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             }
             $this->assertEquals($expected, $service->args);
             $this->assertSame($service, $container->$key);
-
         } else {
             $this->assertSame($expected, $service);
         }
@@ -119,5 +119,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(isset($container['one']));
         $this->assertFalse(isset($container['unk']));
         $this->assertSame('mo', $container['mo']);
+    }
+
+    /**
+     * @expectedException \axy\errors\RequiresOverride
+     * @return ContNoContext
+     */
+    public function testNoContext()
+    {
+        return new ContNoContext();
     }
 }
