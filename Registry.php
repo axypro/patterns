@@ -13,6 +13,7 @@ use axy\patterns\errors\PropertyReadOnly;
 
 /**
  * The registry
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
 {
@@ -195,7 +196,7 @@ class Registry implements \ArrayAccess, \IteratorAggregate, \Countable
     public function getAllVars($load = true)
     {
         if ($load) {
-            foreach ($this->lazy as $k => $v) {
+            foreach (array_keys($this->lazy) as $k) {
                 $this->get($k);
             }
         }

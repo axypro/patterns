@@ -9,6 +9,7 @@ use axy\patterns\Registry;
 
 /**
  * coversDefaultClass axy\patterns\Registry
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class RegistryTest extends \PHPUnit_Framework_TestCase
 {
