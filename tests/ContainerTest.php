@@ -5,8 +5,8 @@
 
 namespace axy\patterns\tests;
 
-use axy\patterns\tests\nstst\Cont;
-use axy\patterns\tests\nstst\ContNoContext;
+use axy\patterns\tests\tst\Cont;
+use axy\patterns\tests\tst\ContNoContext;
 
 /**
  * coversDefaultClass axy\patterns\Container
@@ -36,7 +36,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $container = new Cont();
         $service = $container->$key;
         if ($serv) {
-            $this->assertInstanceOf('axy\patterns\tests\nstst\Serv', $service);
+            $this->assertInstanceOf('axy\patterns\tests\tst\Serv', $service);
             if (isset($expected[0]) && ($expected[0] === 'this')) {
                 $expected[0] = $container;
             }

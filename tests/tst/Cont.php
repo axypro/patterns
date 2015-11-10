@@ -3,7 +3,7 @@
  * @package axy\patterns
  */
 
-namespace axy\patterns\tests\nstst;
+namespace axy\patterns\tests\tst;
 
 use axy\magic\ArrayMagic;
 use axy\patterns\Container;
@@ -36,14 +36,14 @@ class Cont extends Container
      * {@inheritdoc}
      */
     protected $subs = [
-        'one' => 'nstst\Serv',
-        'two' => ['\axy\patterns\tests\nstst\Serv', ['arg']],
+        'one' => 'tst\Serv',
+        'two' => ['\axy\patterns\tests\tst\Serv', ['arg']],
         'three' => [
             'value' => 3,
         ],
         'four' => 4,
         'five' => [
-            'classname' => 'nstst\Serv',
+            'classname' => 'tst\Serv',
             'options' => 'o',
             'reset_args' => true,
         ],

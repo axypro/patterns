@@ -3,7 +3,7 @@
  * @package axy\patterns
  */
 
-namespace axy\patterns\tests\nstst;
+namespace axy\patterns\tests\tst;
 
 use axy\patterns\Container;
 
