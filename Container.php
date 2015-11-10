@@ -111,7 +111,7 @@ class Container implements \ArrayAccess
     }
 
     /**
-     * The list of pointers for subservices
+     * The list of pointers for sub services
      * (for override)
      *
      * @var array
@@ -119,14 +119,14 @@ class Container implements \ArrayAccess
     protected $subs;
 
     /**
-     * The context for the creator of subservices
+     * The context for the creator of sub services
      *
      * @var array
      */
     protected $context;
 
     /**
-     * Use $this as a first argument in a subservice constructor
+     * Use $this as a first argument in a sub service constructor
      *
      * @var boolean
      */

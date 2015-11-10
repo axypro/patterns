@@ -9,7 +9,7 @@ namespace axy\patterns\errors;
 use axy\magic\errors\FieldNotExist;
 
 /**
- * A subservice is not exists
+ * A sub service is not exists
  */
 class ServiceNotExists extends FieldNotExist
 {

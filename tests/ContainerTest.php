@@ -28,14 +28,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerGet
      * @param string $key
-     * @param boolean $serv
+     * @param boolean $eService
      * @param mixed $expected
      */
-    public function testGet($key, $serv, $expected)
+    public function testGet($key, $eService, $expected)
     {
         $container = new TContainer();
         $service = $container->$key;
-        if ($serv) {
+        if ($eService) {
             $this->assertInstanceOf('axy\patterns\tests\tst\Service', $service);
             if (isset($expected[0]) && ($expected[0] === 'this')) {
                 $expected[0] = $container;
@@ -90,6 +90,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     public function testNotExists()
     {
         $container = new TContainer();
+        /** @noinspection PhpUndefinedFieldInspection */
         return $container->unk;
     }
 
@@ -100,6 +101,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     public function testInvalidPointer()
     {
         $container = new TContainer();
+        /** @noinspection PhpUndefinedFieldInspection */
         return $container->four;
     }
 
@@ -110,6 +112,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     public function testReadOnly()
     {
         $container = new TContainer();
+        /** @noinspection PhpUndefinedFieldInspection */
         $container->one = 1;
     }
 

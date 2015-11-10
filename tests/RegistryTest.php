@@ -130,7 +130,7 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
      * covers ::toReadOnly
      * covers ::isReadOnly
      */
-    public function testContructReadOnly()
+    public function testConstructReadOnly()
     {
         $registry = new Registry(['x' => 1, 'y' => 2], null, true);
         $this->assertTrue($registry->isReadOnly());
@@ -148,12 +148,17 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
     public function testMagic()
     {
         $registry = new Registry();
+        /** @noinspection PhpUndefinedFieldInspection */
         $registry->x = 1;
         $this->assertTrue(isset($registry->x));
         $this->assertFalse(isset($registry->y));
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(1, $registry->x);
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(null, $registry->y);
+        /** @noinspection PhpUndefinedFieldInspection */
         $registry->x = 2;
+        /** @noinspection PhpUndefinedFieldInspection */
         $registry->y = 3;
         $this->assertTrue(isset($registry->y));
         $this->assertEquals(['x' => 2, 'y' => 3], $registry->getAllVars());
@@ -194,9 +199,13 @@ class RegistryTest extends \PHPUnit_Framework_TestCase
         };
         $registry = new Registry(['x' => 1], ['y' => $creatorY]);
         $this->assertCount(2, $registry);
+        /** @noinspection PhpUndefinedFieldInspection */
         $registry->x = 1;
+        /** @noinspection PhpUndefinedFieldInspection */
         $registry->y = 2;
+        /** @noinspection PhpUndefinedFieldInspection */
         $registry->z = 3;
+        /** @noinspection PhpUndefinedFieldInspection */
         $this->assertSame(2, $registry->y);
         $this->assertCount(3, $registry);
     }
