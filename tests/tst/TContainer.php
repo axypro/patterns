@@ -8,7 +8,7 @@ namespace axy\patterns\tests\tst;
 use axy\magic\ArrayMagic;
 use axy\patterns\Container;
 
-class Cont extends Container
+class TContainer extends Container
 {
     use ArrayMagic;
 
@@ -36,14 +36,14 @@ class Cont extends Container
      * {@inheritdoc}
      */
     protected $subs = [
-        'one' => 'tst\Serv',
-        'two' => ['\axy\patterns\tests\tst\Serv', ['arg']],
+        'one' => 'tst\Service',
+        'two' => ['\axy\patterns\tests\tst\Service', ['arg']],
         'three' => [
             'value' => 3,
         ],
         'four' => 4,
         'five' => [
-            'classname' => 'tst\Serv',
+            'classname' => 'tst\Service',
             'options' => 'o',
             'reset_args' => true,
         ],
@@ -52,5 +52,5 @@ class Cont extends Container
     /**
      * {@inheritdoc}
      */
-    protected $magicName = 'Cont';
+    protected $magicName = 'Container';
 }

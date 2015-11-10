@@ -5,8 +5,8 @@
 
 namespace axy\patterns\tests;
 
-use axy\patterns\tests\tst\Cont;
-use axy\patterns\tests\tst\ContNoContext;
+use axy\patterns\tests\tst\TContainer;
+use axy\patterns\tests\tst\ContainerNoContext;
 
 /**
  * coversDefaultClass axy\patterns\Container
@@ -18,7 +18,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsset()
     {
-        $container = new Cont();
+        $container = new TContainer();
         $this->assertTrue(isset($container->one));
         $this->assertTrue(isset($container->four));
         $this->assertTrue(isset($container->mo));
@@ -33,10 +33,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testGet($key, $serv, $expected)
     {
-        $container = new Cont();
+        $container = new TContainer();
         $service = $container->$key;
         if ($serv) {
-            $this->assertInstanceOf('axy\patterns\tests\tst\Serv', $service);
+            $this->assertInstanceOf('axy\patterns\tests\tst\Service', $service);
             if (isset($expected[0]) && ($expected[0] === 'this')) {
                 $expected[0] = $container;
             }
@@ -85,11 +85,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     /**
      * covers ::__get
      * @expectedException \axy\patterns\errors\ServiceNotExists
-     * @expectedExceptionMessage Service "unk" is not exist in "Cont"
+     * @expectedExceptionMessage Service "unk" is not exist in "Container"
      */
     public function testNotExists()
     {
-        $container = new Cont();
+        $container = new TContainer();
         return $container->unk;
     }
 
@@ -99,7 +99,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidPointer()
     {
-        $container = new Cont();
+        $container = new TContainer();
         return $container->four;
     }
 
@@ -109,13 +109,13 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testReadOnly()
     {
-        $container = new Cont();
+        $container = new TContainer();
         $container->one = 1;
     }
 
     public function testArrayAccess()
     {
-        $container = new Cont();
+        $container = new TContainer();
         $this->assertTrue(isset($container['one']));
         $this->assertFalse(isset($container['unk']));
         $this->assertSame('mo', $container['mo']);
@@ -123,10 +123,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \axy\errors\RequiresOverride
-     * @return ContNoContext
+     * @return \axy\patterns\tests\tst\ContainerNoContext
      */
     public function testNoContext()
     {
-        return new ContNoContext();
+        return new ContainerNoContext();
     }
 }

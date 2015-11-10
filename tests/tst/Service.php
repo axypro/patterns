@@ -7,7 +7,7 @@ namespace axy\patterns\tests\tst;
 
 use axy\patterns\Container;
 
-class Serv extends Container
+class Service
 {
     public $args;
 

@@ -7,7 +7,7 @@ namespace axy\patterns\tests\tst;
 
 use axy\patterns\Container;
 
-class ContNoContext extends Container
+class ContainerNoContext extends Container
 {
 
 }
