@@ -107,7 +107,7 @@ If variable is not exists returns `FALSE` and do nothing.
 
 ### Getters
 
-##### `get(string $name [, mixed $default = NULL [, $load = TRUE]):mixed
+##### `get(string $name [, mixed $default = NULL [, $load = TRUE]):mixed`
 
 Returns a value of a variable by the `$name`.
 If the variable is not found then returns `$default`.

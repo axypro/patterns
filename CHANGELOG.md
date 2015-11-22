@@ -7,4 +7,4 @@
 
 * `Container`
 * `Registry`
-* `Singletone`
+* `Singleton`
