@@ -1,6 +1,6 @@
 ### dev-master
 
-* Travis
+* Travis.
 
 ### 0.0.2 (10.11.2015)
 
